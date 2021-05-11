@@ -1,25 +1,22 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import Cocktails from './Components/Cocktails'
+import CreateYourOwn from './Components/CreateYourOwn'
+import {Route, Link, Switch } from 'react-router-dom'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav>
+        <Link to='/Cocktails'>Cocktails</Link>
+        <Link to='/Cocktails'>Create Your Own</Link>
+      </nav>
+
+      <Switch>
+        <Route exact path = '/Cocktails' component={Cocktails} />
+        <Route exact path = '/Create-Your-Own' component={CreateYourOwn} />
+      </Switch>
     </div>
   );
 }

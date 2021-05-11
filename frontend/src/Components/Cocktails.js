@@ -1,8 +1,9 @@
 import React from 'react';
+import '../cocktails.css'
 
 function Cocktails(props) {
     return (
-        <div>
+        <div className = 'Drinks'>
             <div className = 'Drink1'>Drink 1</div>
             <div className = 'Drink2'>Drink 2</div>
             <div className = 'Drink3'>Drink 3</div>
