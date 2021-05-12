@@ -1,5 +1,5 @@
 import React from 'react';
-import '../cocktails.css'
+import './cocktails.css'
 
 function CreateYourOwn(props) {
     return (

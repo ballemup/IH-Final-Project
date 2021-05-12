@@ -2,23 +2,25 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-app.use(cors());
-app.use(express.json());
 
 console.log("Testing 1,2,3");
 
 mongoose
-  .connect(
-    "mongodb+srv://ironhackgroup:ihgroup@cluster0.vxfjn.mongodb.net/test?authSource=admin&replicaSet=atlas-8jep18-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
-    {
-      useCreateIndex: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/HackerBlog", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((x) =>
-    console.log(`Connected to MongoDB! Database name: ${x.connections[0].name}`)
+    console.log(`Connected! Database name: ${x.connections[0].name}`)
   )
-  .catch((err) => console.log("Error connecting to MongoDB", err));
+  .catch((err) => console.error("Error connecting to Database", err));
 
-app.listen(5000);
+app.use(express.json());
+
+app.use(cors());
+
+app.use("/api", require("./routes/routes.js"));
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
