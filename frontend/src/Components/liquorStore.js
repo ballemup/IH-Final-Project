@@ -1,33 +1,44 @@
-// import React from 'react';
-
-// function liquorStore(props) {
-
-//     useEffect(() => {
-//         axios.get(`https://ironrest.herokuapp.com`).then((res) => {
-//           setProducts(res.data);
-//         });
-//       }, []);
-    
-//       // Post product to Wishlist API
-//       function addToWishlist(item) {
-//         let product = {
-//           name: item.name,
-//           price: item.price,
-//           image: item.image,
-//         };
-//         console.log(product);
-//         axios.post(`https://ironrest.herokuapp.com/wishlist`, {
-//           product: product,
-//         });
-//       }
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+// import { Link, Route, Switch } from 'react-router-dom';
 
 
 
-//     return (
-//         <div>
+const LiquorStore = (props)=>{
+    const [bottle, setBottle]=useState([]);
+    console.log(props);
+   
+
+
+useEffect(()=>{
+    axios.get('https://ih-beers-api2.herokuapp.com/beers').then((res) => {
+        setBottle(res.data);
+      });
+
+},[]);
+
+  const showBottles=()=>{
+    return bottle.map((bottle,i)=>{
+        return (
+            <div>
+              <div>
+                {/* <Link to={`/bottle/${bottle._id}`}>
+                  <img src={bottle.image_url} />
+                </Link> */}
+              </div>
+              <div></div>
+            </div>
+          );
+    });
+  }
+    return (
+        <div>
+            Here are all our bottles
+            {showBottles()}
             
-//         </div>
-//     );
-// }
+        </div>
+    );
 
-// export default liquorStore;
+};
+
+export default LiquorStore;

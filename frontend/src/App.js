@@ -9,6 +9,8 @@ import actions from "./api";
 import Cocktails from "./Components/Cocktails";
 import CreateYourOwn from "./Components/CreateYourOwn";
 import CartIcon from "./Components/cart-icon/cart-icon";
+import LiquorStore from "./Components/LiquorStore";
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -33,6 +35,8 @@ function App() {
           <Link to="/">Home</Link>
           <Link to="/Cocktails">Cocktails</Link>
           <Link to="/Cocktails">Create Your Own</Link>
+          <Link to="/LiquorStore">Our Liquor Store</Link>
+          
           <div className="login-container">
             <Auth setUser={setUser} />
           </div>
@@ -52,6 +56,7 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/Cocktails" component={Cocktails} />
           <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
+          <Route exact path="/LiquorStore" component={LiquorStore}/>
         </Switch>
       </div>
     </TheContext.Provider>
