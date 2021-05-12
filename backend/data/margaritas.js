@@ -1,4 +1,4 @@
-[
+const margaritas = [
   {
     id: 1,
     name: "Strawberry Slushie",
@@ -42,3 +42,5 @@
     price: 12,
   },
 ];
+
+module.exports = margaritas;

@@ -3,13 +3,16 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const Message = require("../models/Message");
 const User = require("../models/User");
+const margaritas = require("../data/margaritas");
 
 router.post(`/add-message`, authorize, (req, res) => {
   let msg = req.body;
   msg.ownerId = res.locals.user._id;
   Message.create(msg).then((message) => res.json(message));
 });
-
+router.get("/margaritas", (req, res) => {
+  res.json({ margaritas });
+});
 router.get(`/get-user`, authorize, async (req, res) => {
   let user = await User.findById(res.locals.user._id);
   res.json(user);

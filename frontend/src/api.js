@@ -48,6 +48,10 @@ const actions = {
     localStorage.setItem("token", res.data.token);
     return res.data.user;
   },
+
+  getMargs: async () => {
+    return axios.get(`${serverUrl}/margaritas`);
+  },
 };
 
 export default actions;
