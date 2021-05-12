@@ -1,6 +1,6 @@
 import React from "react";
 import cartIcon from "../../assets/cart-icon.png";
-import "./cart-icon.styles.scss";
+import "./cart-icon.styles.css";
 
 const CartIcon = () => {
   return (
