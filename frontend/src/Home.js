@@ -7,12 +7,7 @@ import Auth from "./Auth";
 function Home(props) {
   const { user, setUser } = useContext(TheContext);
 
-  return (
-    <div>
-      <h4>User Login</h4>
-      <Auth setUser={setUser} />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Home;

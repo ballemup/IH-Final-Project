@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { useState, useEffect, useContext } from "react";
 import TheContext from "./TheContext";
 import { Switch, Link, Route } from "react-router-dom";
@@ -6,10 +6,9 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Auth from "./Auth";
 import actions from "./api";
-import Cocktails from './Components/Cocktails'
-import CreateYourOwn from './Components/CreateYourOwn'
-
-
+import Cocktails from "./Components/Cocktails";
+import CreateYourOwn from "./Components/CreateYourOwn";
+import CartIcon from "./Components/cart-icon/cart-icon";
 
 function App() {
   const [user, setUser] = useState({});
@@ -30,12 +29,16 @@ function App() {
   return (
     <TheContext.Provider value={context}>
       <div className="App">
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/Cocktails">Cocktails</Link>
+          <Link to="/Cocktails">Create Your Own</Link>
+          <div className="login-container">
+            <Auth setUser={setUser} />
+          </div>
+          <CartIcon />
+        </nav>
 
-      <nav>
-        <Link to='/Cocktails'>Cocktails</Link>
-        <Link to='/Cocktails'>Create Your Own</Link>
-      </nav>
-      
         {user?.name && (
           <div>
             <p>Welcome {user?.name}</p>
@@ -47,8 +50,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path = '/Cocktails' component={Cocktails} />
-        <Route exact path = '/Create-Your-Own' component={CreateYourOwn} />
+          <Route exact path="/Cocktails" component={Cocktails} />
+          <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
         </Switch>
       </div>
     </TheContext.Provider>
