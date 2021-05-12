@@ -11,7 +11,7 @@ function Cocktails(props) {
 
     useEffect(()=> {
     axios
-        .get('http://iron-cors-anywhere.herokuapp.com/http://www.thecocktaildb.com/api/json/v1/1/random.php')
+        .get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
         .then((res) => {
             setDrinks(res.data);
         });
@@ -27,23 +27,32 @@ function Cocktails(props) {
                     <div className = 'Drink1'>
                         <h2>{drinks.drinks?.[0].strDrink}</h2>
                         <img className = 'DrinkImg' src={drinks.drinks?.[0].strDrinkThumb} />
-
+                        <button>Add to Cart</button>
                     </div>
                     <div className = 'Drink2'>
-                        <h2>Drink 2</h2>
+                        <h2>{drinks.drinks?.[1].strDrink}</h2>
+                        <img className = 'DrinkImg' src={drinks.drinks?.[1].strDrinkThumb} />
+                        <button>Add to Cart</button>
                     </div>
                     <div className = 'Drink3'>
-                        <h2>Drink 3</h2>
-
+                        <h2>{drinks.drinks?.[2].strDrink}</h2>
+                        <img className = 'DrinkImg' src={drinks.drinks?.[2].strDrinkThumb} />
+                        <button>Add to Cart</button>
                     </div>
                     <div className = 'Drink4'>
-                        <h2>Drink 4</h2>
+                        <h2>{drinks.drinks?.[3].strDrink}</h2>
+                        <img className = 'DrinkImg' src={drinks.drinks?.[3].strDrinkThumb} />
+                        <button>Add to Cart</button>
                     </div>
                     <div className = 'Drink5'>
-                        <h2>Drink 5</h2>
+                        <h2>{drinks.drinks?.[4].strDrink}</h2>
+                        <img className = 'DrinkImg' src={drinks.drinks?.[4].strDrinkThumb} />
+                        <button>Add to Cart</button>
                     </div>
                     <div className = 'Drink6'>
-                        <h2>Drink 6</h2>
+                        <h2>{drinks.drinks?.[5].strDrink}</h2>
+                        <img className = 'DrinkImg' src={drinks.drinks?.[5].strDrinkThumb} />
+                        <button>Add to Cart</button>
                     </div>
                 </div>
         </div>
