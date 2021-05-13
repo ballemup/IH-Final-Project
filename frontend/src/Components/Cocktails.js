@@ -9,25 +9,29 @@ function Cocktails(props) {
 
   useEffect(() => {
     actions.getMargs().then((res) => {
-      console.log(res);
       setDrinks(res.data.margaritas);
     });
   }, []);
 
   const addToCart = (data) => {
-    props.setCart([...props.cart, data]);
+    if (!props.cart.find((x) => x.id === data.id)) {
+      props.setCart([...props.cart, data]);
+    } else {
+      return alert("item already added to Shopping Cart");
+    }
     console.log("added to cart");
   };
 
   let displayAllProducts = () => {
     return drinks.map((item, i) => {
       return (
-        <div key={i}>
-          <img src={item.image} className="margaritasImg" />
-          <div>
+        <div className="Drinks" key={i}>
+          <img className="DrinkImg" src={item.image} />
+          <p className="drinkTxt">
             <b>{item.name}</b>
-          </div>
-          <div>${item.price}</div>
+            <br></br>
+            <b>Price:</b> ${item.price}
+          </p>
           <button onClick={() => addToCart(item)}>Add to Cart</button>
         </div>
       );

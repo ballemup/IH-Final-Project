@@ -6,7 +6,7 @@ const Cart = (props) => {
 
   let removeItems = (item) => {
     let cart = [...props.cart];
-    let filteredCart = cart.filter((eachItem) => eachItem.name != item.name);
+    let filteredCart = cart.filter((eachItem) => eachItem.id !== item.id);
     props.setCart(filteredCart);
   };
 

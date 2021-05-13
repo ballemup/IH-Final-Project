@@ -1,3 +1,31 @@
-.margaritasImg {
-  width: 300px;
+.Drinks {
+  display: grid;
+  justify-content: center;
+  grid-gap: 15%;
+  grid-template-columns: 100px 100px 100px;
+  row-gap: 33%;
+  align-items: center;
+  margin-top: 10rem;
+  font-size: 10vh 10vw;
+}
+
+/* .page {
+  display: flex;
+  flex-direction: column;
+  margin: 10vh 50vw;
+  align-items: center;
+} */
+
+.drinkTxt {
+  font-size: 10rem 20vw;
+  overflow: hidden;
+  font-size: 2rem;
+}
+
+.DrinkImg {
+  height: 20rem;
+  width: 15rem;
+  margin: 1rem;
+  border-radius: 5rem;
+  float: left;
 }

@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css";
 import { useState, useEffect, useContext } from "react";
 import TheContext from "./TheContext";
 import { Switch, Link, Route } from "react-router-dom";
@@ -27,16 +28,16 @@ function App(props) {
     });
   }, []);
 
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("token");
-  };
+  // const handleLogout = () => {
+  //   setUser(null);
+  //   localStorage.removeItem("token");
+  // };
 
   return (
     <TheContext.Provider value={context}>
       <div className="App">
         <Navbar
-          bg="dark"
+          bg="info"
           variant="dark"
           sticky="top"
           expand="sm"
@@ -65,23 +66,13 @@ function App(props) {
               <Link className="NavL" to="/LiquorStore">
                 Our Liquor Store
               </Link>
-
-              <div className="login-container">
-                <Auth setUser={setUser} />
-              </div>
+              <Auth className="login-container" setUser={setUser} />
               <Link to="/Cart">
-                <CartIcon />
+                <CartIcon cart={cart} />
               </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-
-        {user?.name && (
-          <div>
-            <p>Welcome {user?.name}</p>
-            <button onClick={handleLogout}>Log Out</button>
-          </div>
-        )}
 
         <Switch>
           <Route
@@ -95,17 +86,13 @@ function App(props) {
           <Route
             exact
             path="/Cocktails"
-            render={(props) => (
-              <Cocktails {...props} setCart={setCart} cart={cart} />
-            )}
+            render={(props) => <Cocktails setCart={setCart} cart={cart} />}
           />
           <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
           <Route
             exact
             path="/Cart"
-            render={(props) => (
-              <Cart {...props} setCart={setCart} cart={cart} />
-            )}
+            render={(props) => <Cart setCart={setCart} cart={cart} />}
           />
           <Route exact path="/LiquorStore" component={LiquorStore} />
         </Switch>
