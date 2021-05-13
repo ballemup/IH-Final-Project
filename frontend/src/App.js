@@ -15,9 +15,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import LiquorStore from "./Components/LiquorStore";
 
-function App() {
+function App(props) {
   const [user, setUser] = useState({});
   const context = { user, setUser };
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     console.log("app mounted");
@@ -68,7 +69,9 @@ function App() {
               <div className="login-container">
                 <Auth setUser={setUser} />
               </div>
-              <CartIcon />
+              <Link to="/Cart">
+                <CartIcon />
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -81,12 +84,29 @@ function App() {
         )}
 
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home {...props} setCart={setCart} cart={cart} />
+            )}
+          />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/Cocktails" component={Cocktails} />
+          <Route
+            exact
+            path="/Cocktails"
+            render={(props) => (
+              <Cocktails {...props} setCart={setCart} cart={cart} />
+            )}
+          />
           <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
-          <Route exact path="/Cart" component={Cart} />
+          <Route
+            exact
+            path="/Cart"
+            render={(props) => (
+              <Cart {...props} setCart={setCart} cart={cart} />
+            )}
+          />
           <Route exact path="/LiquorStore" component={LiquorStore} />
         </Switch>
       </div>

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./cocktails.css";
 import axios from "axios";
 import actions from "../api";
+import Cart from "./Cart";
 
 function Cocktails(props) {
-  console.log(props);
-
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
@@ -14,25 +13,17 @@ function Cocktails(props) {
       setDrinks(res.data.margaritas);
     });
   }, []);
-  console.log(drinks);
 
-  // Post product to Cart
-  function addToCart(item) {
-    let product = {
-      name: item.name,
-      price: item.price,
-      image: item.image,
-    };
-    axios.post(`./Cart`, {
-      product: product,
-    });
-  }
+  const addToCart = (data) => {
+    props.setCart([...props.cart, data]);
+    console.log("added to cart");
+  };
 
   let displayAllProducts = () => {
     return drinks.map((item, i) => {
       return (
         <div key={i}>
-          <img src={item.image} />
+          <img src={item.image} className="margaritasImg" />
           <div>
             <b>{item.name}</b>
           </div>
