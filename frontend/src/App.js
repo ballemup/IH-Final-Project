@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css";
 import { useState, useEffect, useContext } from "react";
 import TheContext from "./TheContext";
 import { Switch, Link, Route } from "react-router-dom";
@@ -14,6 +15,7 @@ import Cart from "./Components/Cart";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import LiquorStore from "./Components/LiquorStore";
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -64,10 +66,7 @@ function App() {
               <Link className="NavL" to="/LiquorStore">
                 Our Liquor Store
               </Link>
-
-              <div className="login-container">
-                <Auth setUser={setUser} />
-              </div>
+                <Auth className="login-container" setUser={setUser} />
               <CartIcon />
             </Nav>
           </Navbar.Collapse>

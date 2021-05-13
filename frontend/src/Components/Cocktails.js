@@ -31,12 +31,12 @@ function Cocktails(props) {
   let displayAllProducts = () => {
     return drinks.map((item, i) => {
       return (
-        <div key={i}>
-          <img src={item.image} />
-          <div>
-            <b>{item.name}</b>
-          </div>
-          <div>${item.price}</div>
+        <div className = "Drinks" key={i}>
+          <img className = "DrinkImg" src={item.image} />
+          <p className = "drinkTxt">
+            <b>{item.name}</b><br></br>
+              <b>Price:</b> ${item.price}
+          </p>
           <button onClick={() => addToCart(item)}>Add to Cart</button>
         </div>
       );
