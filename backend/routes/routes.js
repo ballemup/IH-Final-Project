@@ -33,7 +33,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/logMeIn", async (req, res) => {
+  //FIND USER
   let user = await User.findOne({ email: req.body.email });
+
+  //IF NO USER >> CREATE USER
 
   if (!user) {
     user = await User.create(req.body);

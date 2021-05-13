@@ -28,16 +28,16 @@ function App() {
     });
   }, []);
 
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("token");
-  };
+  // const handleLogout = () => {
+  //   setUser(null);
+  //   localStorage.removeItem("token");
+  // };
 
   return (
     <TheContext.Provider value={context}>
       <div className="App">
         <Navbar
-          bg="dark"
+          bg="info"
           variant="dark"
           sticky="top"
           expand="sm"
@@ -71,13 +71,6 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-
-        {user?.name && (
-          <div>
-            <p>Welcome {user?.name}</p>
-            <button onClick={handleLogout}>Log Out</button>
-          </div>
-        )}
 
         <Switch>
           <Route exact path="/" component={Home} />
