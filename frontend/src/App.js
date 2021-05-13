@@ -9,6 +9,11 @@ import actions from "./api";
 import Cocktails from "./Components/Cocktails";
 import CreateYourOwn from "./Components/CreateYourOwn";
 import CartIcon from "./Components/cart-icon/cart-icon";
+import Cart from "./Components/Cart";
+// import Navbar from "./Components/Header";
+import "bootstrap/dist/css/bootstrap.css";
+import { Nav, Navbar } from "react-bootstrap";
+import LiquorStore from "./Components/LiquorStore";
 
 function App() {
   const [user, setUser] = useState({});
@@ -29,15 +34,44 @@ function App() {
   return (
     <TheContext.Provider value={context}>
       <div className="App">
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/Cocktails">Cocktails</Link>
-          <Link to="/Cocktails">Create Your Own</Link>
-          <div className="login-container">
-            <Auth setUser={setUser} />
-          </div>
-          <CartIcon />
-        </nav>
+        <Navbar
+          bg="dark"
+          variant="dark"
+          sticky="top"
+          expand="sm"
+          collapseOnSelect
+        >
+          <Navbar.Toggle />
+          <Navbar.Collapse>
+            <Navbar.Brand>
+              <img
+                className="navimg"
+                src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Drinks-PNG-/Summer_Cocktail_PNG_Clip_Art_Image.png?m=1507172108"
+                width="20px"
+              />{" "}
+              Slushie World
+            </Navbar.Brand>
+            <Nav>
+              <Link className="NavL" to="/">
+                Home
+              </Link>
+              <Link className="NavL" to="/Cocktails">
+                Cocktails
+              </Link>
+              <Link className="NavL" to="/Cocktails">
+                Create Your Own
+              </Link>
+              <Link className="NavL" to="/LiquorStore">
+                Our Liquor Store
+              </Link>
+
+              <div className="login-container">
+                <Auth setUser={setUser} />
+              </div>
+              <CartIcon />
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
         <Switch>
           <Route exact path="/" component={Home} />
@@ -45,6 +79,8 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/Cocktails" component={Cocktails} />
           <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
+          <Route exact path="/Cart" component={Cart} />
+          <Route exact path="/LiquorStore" component={LiquorStore} />
         </Switch>
       </div>
     </TheContext.Provider>

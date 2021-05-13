@@ -1,53 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import './cocktails.css'
-import axios from 'axios';
-
-
+import React, { useState, useEffect } from "react";
+import "./cocktails.css";
+import axios from "axios";
+import actions from "../api";
 
 function Cocktails(props) {
-    console.log(props)
+  console.log(props);
 
-    const [drinks, setDrinks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
 
-    useEffect(()=> {
-    axios
-        .get('http://iron-cors-anywhere.herokuapp.com/http://www.thecocktaildb.com/api/json/v1/1/random.php')
-        .then((res) => {
-            setDrinks(res.data);
-        });
-    }, []);
-    console.log(drinks)
+  useEffect(() => {
+    actions.getMargs().then((res) => {
+      console.log(res);
+      setDrinks(res.data.margaritas);
+    });
+  }, []);
+  console.log(drinks);
 
+  // Post product to Cart
+  function addToCart(item) {
+    let product = {
+      name: item.name,
+      price: item.price,
+      image: item.image,
+    };
+    axios.post(`./Cart`, {
+      product: product,
+    });
+  }
 
-    return (
-        
-        <div className = 'page'>
-            <h1>SELECT YOUR DRINK</h1>
-                <div className = 'Drinks'>
-                    <div className = 'Drink1'>
-                        <h2>{drinks.drinks?.[0].strDrink}</h2>
-                        <img className = 'DrinkImg' src={drinks.drinks?.[0].strDrinkThumb} />
-
-                    </div>
-                    <div className = 'Drink2'>
-                        <h2>Drink 2</h2>
-                    </div>
-                    <div className = 'Drink3'>
-                        <h2>Drink 3</h2>
-
-                    </div>
-                    <div className = 'Drink4'>
-                        <h2>Drink 4</h2>
-                    </div>
-                    <div className = 'Drink5'>
-                        <h2>Drink 5</h2>
-                    </div>
-                    <div className = 'Drink6'>
-                        <h2>Drink 6</h2>
-                    </div>
-                </div>
+  let displayAllProducts = () => {
+    return drinks.map((item, i) => {
+      return (
+        <div key={i}>
+          <img src={item.image} />
+          <div>
+            <b>{item.name}</b>
+          </div>
+          <div>${item.price}</div>
+          <button onClick={() => addToCart(item)}>Add to Cart</button>
         </div>
-    );
+      );
+    });
+  };
+
+  return <div>{displayAllProducts()}</div>;
 }
 
 export default Cocktails;
