@@ -35,7 +35,7 @@ function App() {
     <TheContext.Provider value={context}>
       <div className="App">
         <Navbar
-          bg="dark"
+          bg="info"
           variant="dark"
           sticky="top"
           expand="sm"
