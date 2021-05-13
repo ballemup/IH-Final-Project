@@ -60,7 +60,7 @@ function App() {
               <Link className="NavL" to="/Cocktails">
                 Cocktails
               </Link>
-              <Link className="NavL" to="/Cocktails">
+              <Link className="NavL" to="/Create-Your-Own">
                 Create Your Own
               </Link>
               <Link className="NavL" to="/LiquorStore">
