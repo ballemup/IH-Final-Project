@@ -3,8 +3,21 @@ import TheContext from "./TheContext";
 import axios from "axios";
 import actions from "./api";
 import Auth from "./Auth";
+import HeroSection from './Components/HeroSection'
+import Cards from './Components/Cards';
+
 
 function Home(props) {
+
+  return (
+    <>
+      <HeroSection />
+      <Cards />
+      {/* <Footer /> */}
+    </>
+  );
+
+  
   const [messages, setMessages] = useState([]);
 
   const { user, setUser } = useContext(TheContext);
@@ -31,19 +44,10 @@ function Home(props) {
 
   const showMessages = () =>
     messages.map(({ message, _id }) => <li key={_id}>{message}</li>);
-
+  
   return (
+    
     <div>
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Slushie World</h1>
-          <p class="lead">
-            Enjoy the Best Slushies at home when you order from Slushie World!
-            We deliver to your door in just a couple of clicks. Order from our
-            set menu or Create your own drink!
-          </p>
-        </div>
-      </div>
       <h3>Backend Message Test</h3>
       {user?.name}
       {user?.name && (

@@ -10,10 +10,12 @@ import Cocktails from "./Components/Cocktails";
 import CreateYourOwn from "./Components/CreateYourOwn";
 import CartIcon from "./Components/cart-icon/cart-icon";
 import Cart from "./Components/Cart";
-// import Navbar from "./Components/Header";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import LiquorStore from "./Components/LiquorStore";
+// import Footer from './Components/Footer';
+
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -34,6 +36,7 @@ function App() {
   return (
     <TheContext.Provider value={context}>
       <div className="App">
+
         <Navbar
           bg="info"
           variant="dark"
@@ -72,6 +75,8 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        {/* <Footer /> */}
+        
 
         <Switch>
           <Route exact path="/" component={Home} />
