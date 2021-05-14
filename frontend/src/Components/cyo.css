@@ -29,7 +29,12 @@
   float: left;
 }
 
-.btn-group:active {
+.juices {
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.button:active {
   background-color: red;
 }
 
@@ -39,25 +44,4 @@
   align-items: center;
   align-content: center;
   margin: 5rem;
-}
-
-h1 {
-  padding: 3rem;
-}
-
-h2 {
-  padding: 2rem;
-}
-
-.alcohol,
-.juices,
-.ingredients,
-.syrup,
-.sodas {
-  margin: 1rem;
-  padding: 1rem;
-}
-
-button {
-  margin: 2rem;
 }

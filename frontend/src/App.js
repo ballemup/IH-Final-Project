@@ -11,13 +11,13 @@ import Cocktails from "./Components/Cocktails";
 import CreateYourOwn from "./Components/CreateYourOwn";
 import CartIcon from "./Components/cart-icon/cart-icon";
 import Cart from "./Components/Cart";
-// import Navbar from "./Components/Header";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import LiquorStore from "./Components/LiquorStore";
 import Checkout from "./Components/Checkout";
 
 // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || "{}";
+// import Footer from './Components/Footer';
 
 function App(props) {
   const [user, setUser] = useState({});
@@ -81,6 +81,7 @@ function App(props) {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        {/* <Footer /> */}
 
         <Switch>
           <Route
