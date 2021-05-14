@@ -10,21 +10,20 @@ function Cocktails(props) {
       setDrinks(res.data.margaritas);
     });
   }, []);
-
+  console.log(drinks);
   const addToCart = (data) => {
-    // if (!props.cart.find((x) => x.id === data.id)) {
-    //   props.setCart([...props.cart, data]);
-    // } else {
-    //   return alert("item already added to Shopping Cart");
-    // }
-    // console.log("added to cart");()
+    console.log(data);
+
     let cart = { ...props.cart };
-    if (cart[data.name]) {
+    if (cart[data.id]) {
       alert("item already in Shopping cart");
     } else {
+      // adding quantity key value to data object
       data.quantity = 1;
-      cart[data.name] = data;
+      // data is the object you clicked on, cart[data.id] is the unique item within the list of items in the cart. This adds it to the cart
+      cart[data.id] = data;
     }
+    // Setting cart to new values
     props.setCart(cart);
   };
 

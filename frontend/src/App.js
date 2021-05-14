@@ -23,7 +23,6 @@ function App(props) {
   const [user, setUser] = useState({});
   const context = { user, setUser };
   const [cart, setCart] = useState({});
-  const [subtotal, setSubtotal] = useState();
   const [count, setCount] = useState(1);
 
   // useEffect(() => {
@@ -105,8 +104,6 @@ function App(props) {
               <Cart
                 count={count}
                 setCount={setCount}
-                subtotal={subtotal}
-                setSubtotal={setSubtotal}
                 setCart={setCart}
                 cart={cart}
               />
