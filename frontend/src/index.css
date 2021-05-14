@@ -5,29 +5,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* nav {
-  display: flex;
-  justify-content: space-around;
-  background: #eee;
-} */
-
-/* nav a {
+nav {
   display: flex;
   justify-content: space-between;
+  background: #eee;
+  align-items: center;
+}
+*/ nav a {
+  display: flex;
   text-decoration: none;
-} */
+}
 
-/* .login-container {
+.login-container {
   display: flex;
   align-items: center;
-} */
+}
 
-/* .NavL {
-  color: rgb(95, 51, 51);
+.NavL {
+  color: white;
   padding-left: 30px;
   padding-right: 30px;
 }
 .container {
   display: flex;
   justify-content: space-between;
-} */
+}

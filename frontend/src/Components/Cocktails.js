@@ -2,41 +2,36 @@ import React, { useState, useEffect } from "react";
 import "./cocktails.css";
 import axios from "axios";
 import actions from "../api";
+import Cart from "./Cart";
 
 function Cocktails(props) {
-  console.log(props);
-
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
     actions.getMargs().then((res) => {
-      console.log(res);
       setDrinks(res.data.margaritas);
     });
   }, []);
-  console.log(drinks);
 
-  // Post product to Cart
-  function addToCart(item) {
-    let product = {
-      name: item.name,
-      price: item.price,
-      image: item.image,
-    };
-    axios.post(`./Cart`, {
-      product: product,
-    });
-  }
+  const addToCart = (data) => {
+    if (!props.cart.find((x) => x.id === data.id)) {
+      props.setCart([...props.cart, data]);
+    } else {
+      return alert("item already added to Shopping Cart");
+    }
+    console.log("added to cart");
+  };
 
   let displayAllProducts = () => {
     return drinks.map((item, i) => {
       return (
-        <div key={i}>
-          <img src={item.image} />
-          <div>
+        <div className="Drinks" key={i}>
+          <img className="DrinkImg" src={item.image} />
+          <p className="drinkTxt">
             <b>{item.name}</b>
-          </div>
-          <div>${item.price}</div>
+            <br></br>
+            <b>Price:</b> ${item.price}
+          </p>
           <button onClick={() => addToCart(item)}>Add to Cart</button>
         </div>
       );

@@ -1,44 +1,43 @@
 const margaritas = [
   {
     id: 1,
-    name: "Strawberry Slushie",
+    name: "Strawberry Slushy",
     image:
-      "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+      "https://www.feastingathome.com/wp-content/uploads/2017/06/Stawberry-Slushie-105.jpg",
     price: 12,
   },
   {
     id: 2,
-    name: "Blue Margarita",
-    image:
-      "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg",
+    name: "Blue Slushy",
+    image: "https://www.frozit.in/images/products/extra/blue-lemon-slush.jpg-5b9166eb99839.jpg",
     price: 12,
   },
   {
     id: 3,
-    name: "Tommy's Margarita",
+    name: "Tommy's Slushy",
     image:
-      "https://www.thecocktaildb.com/images/media/drink/loezxn1504373874.jpg",
+      "https://www.culinaryhill.com/wp-content/uploads/2017/06/Margarita-Slush-Culinary-Hill-2-660x990.jpg",
     price: 12,
   },
   {
     id: 4,
-    name: "Whitecap Margarita",
+    name: "Whitecap Slushy",
     image:
-      "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
+      "https://judiesblog.files.wordpress.com/2013/07/20130622_pina-colada_dsc_0924.jpg?w=500&h=755",
     price: 12,
   },
   {
     id: 5,
-    name: "Strawberry Margarita",
+    name: "Watermelon Slushy",
     image:
-      "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg",
+      "https://www.fifteenspatulas.com/wp-content/uploads/2011/04/Watermelon-Slushie-Fifteen-Spatulas-1-640x966.jpg",
     price: 12,
   },
   {
     id: 6,
-    name: "Smashed Watermelon Margarita",
+    name: "Cherry Slushy",
     image:
-      "https://www.thecocktaildb.com/images/media/drink/dztcv51598717861.jpg",
+      "https://www.yayforfood.com/wp-content/uploads/4-ingredient-watermelon-cherry-slushies-featured-scaled.jpg.webp",
     price: 12,
   },
 ];

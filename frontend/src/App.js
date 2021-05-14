@@ -1,4 +1,5 @@
 import "./App.css";
+import "./index.css";
 import { useState, useEffect, useContext } from "react";
 import TheContext from "./TheContext";
 import { Switch, Link, Route } from "react-router-dom";
@@ -17,9 +18,10 @@ import LiquorStore from "./Components/LiquorStore";
 
 
 
-function App() {
+function App(props) {
   const [user, setUser] = useState({});
   const context = { user, setUser };
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     console.log("app mounted");
@@ -61,17 +63,16 @@ function App() {
               <Link className="NavL" to="/Cocktails">
                 Cocktails
               </Link>
-              <Link className="NavL" to="/Cocktails">
+              <Link className="NavL" to="/Create-Your-Own">
                 Create Your Own
               </Link>
               <Link className="NavL" to="/LiquorStore">
                 Our Liquor Store
               </Link>
-
-              <div className="login-container">
-                <Auth setUser={setUser} />
-              </div>
-              <CartIcon />
+              <Auth className="login-container" setUser={setUser} />
+              <Link to="/Cart">
+                <CartIcon cart={cart} />
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -79,12 +80,25 @@ function App() {
         
 
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home {...props} setCart={setCart} cart={cart} />
+            )}
+          />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/Cocktails" component={Cocktails} />
+          <Route
+            exact
+            path="/Cocktails"
+            render={(props) => <Cocktails setCart={setCart} cart={cart} />}
+          />
           <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
-          <Route exact path="/Cart" component={Cart} />
+          <Route
+            exact
+            path="/Cart"
+            render={(props) => <Cart setCart={setCart} cart={cart} />}
+          />
           <Route exact path="/LiquorStore" component={LiquorStore} />
         </Switch>
       </div>
