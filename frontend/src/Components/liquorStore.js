@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import "./LiquorStore.css";
+
+import actions from '../api';
 // import { Link, Route, Switch } from 'react-router-dom';
 
 
@@ -11,32 +14,56 @@ const LiquorStore = (props)=>{
 
 
 useEffect(()=>{
-    axios.get('https://ih-beers-api2.herokuapp.com/beers').then((res) => {
-        setBottle(res.data);
+    actions.getBottle().then((res) => {
+      console.log(res)
+        setBottle(res.data.bottles);
       });
 
 },[]);
+console.log(bottle)
 
   const showBottles=()=>{
-    return bottle.map((bottle,i)=>{
+    return bottle.map((bottles,i)=>{
         return (
-            <div>
-              <div>
-                {/* <Link to={`/bottle/${bottle._id}`}>
-                  <img src={bottle.image_url} />
-                </Link> */}
-              </div>
-              <div></div>
-            </div>
+          
+            <div className="container1">
+             <img src={bottles.Image_url} className="bottleImages"/>
+            {bottles.Name}
+           <div className="bottleName">{bottles.Category}  </div> 
+           <div className="bottlePrice">${bottles.Price}</div> 
+           <div className="bottleDescription">{bottles.Description}</div>
+           {/* <div><button className="cart-button">Add to Cart</button></div>  */}
+           <button
+              className="cart-button"
+              // onClick={() => addToWishlist(item.product)}
+            >
+              Add to Cart
+            </button>
+
+           </div>
           );
     });
   }
     return (
+
+      <div className ="container1">
+        <div className = "header">
         <div>
-            Here are all our bottles
-            {showBottles()}
+        <h1>Our Liquor Store </h1> 
+        </div>
+        <div className="header-div1">
+        <img src="https://i.pinimg.com/originals/f1/a6/b6/f1a6b62def7a67a90263587a2966cde4.jpg" />
+      </div>
+      
+
+          
+
+</div>
+
+           <div>{showBottles()}</div> 
             
         </div>
+        
     );
 
 };

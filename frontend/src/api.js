@@ -52,6 +52,10 @@ const actions = {
   getMargs: async () => {
     return axios.get(`${serverUrl}/margaritas`);
   },
+  getBottle: async () => {
+    return axios.get(`${serverUrl}/getBottle`);
+  }
 };
+
 
 export default actions;

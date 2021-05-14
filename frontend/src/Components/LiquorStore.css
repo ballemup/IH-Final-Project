@@ -1,0 +1,55 @@
+.header{
+background-color: aqua;
+font-style: italic;
+
+
+}
+.container1{
+
+    padding: 30px;
+  margin-bottom: 70px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+
+
+.bottleImages{
+    margin-bottom: 30px;
+    width: 200px;
+
+}
+.header-div1 img {
+    height: 400px;
+  }
+
+  .bottleName {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .cart-button:hover {
+    background-color: rgb(86, 99, 126);
+    transition: all 0.3s ease;
+    border: 3px solid rgb(135, 213, 226);
+    transition: border 0.3s ease-out;
+  }
+  
+  .cart-button:active {
+    background-color: #533e8e;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .bottleDescription{
+    text-align: center;
+    border: 1px solid rgb(49, 90, 79);
+    width: 500px;
+    height: 100;
+
+   
+    }
+    

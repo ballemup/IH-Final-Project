@@ -4,6 +4,7 @@ const router = express.Router();
 const Message = require("../models/Message");
 const User = require("../models/User");
 const margaritas = require("../data/margaritas");
+const Bottle = require("../models/Bottle");
 
 router.post(`/add-message`, authorize, (req, res) => {
   let msg = req.body;
@@ -46,6 +47,15 @@ router.post("/logMeIn", async (req, res) => {
     res.json({ user, token });
   });
 });
+
+router.get("/getBottle", (req, res) => {
+  Bottle.find().then(bottles => {
+    res.json({bottles})
+})
+  
+});
+
+
 
 function authorize(req, res, next) {
   console.log("middleware", req.headers);

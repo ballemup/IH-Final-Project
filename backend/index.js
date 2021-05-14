@@ -2,13 +2,17 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const {response} = require("express");
+
+
+
 
 console.log("Testing 1,2,3");
 
 mongoose
   .connect(
     process.env.MONGODB_URI ||
-      "mongodb+srv://ironhackgroup:ihgroup@cluster0.fnlcd.mongodb.net/FinalGroupProject?authSource=admin&replicaSet=atlas-fw0wee-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
+      "mongodb+srv://ironhackgroup:ihgroup@cluster0.fnlcd.mongodb.net/FinalGroupProject?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -24,6 +28,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api", require("./routes/routes.js"));
+
+
 
 const PORT = process.env.PORT || 5000;
 
