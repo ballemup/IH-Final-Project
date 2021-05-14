@@ -15,11 +15,20 @@ import Cart from "./Components/Cart";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import LiquorStore from "./Components/LiquorStore";
+import Checkout from "./Components/Checkout";
+
+// const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || "{}";
 
 function App(props) {
   const [user, setUser] = useState({});
   const context = { user, setUser };
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
+  const [subtotal, setSubtotal] = useState();
+  const [count, setCount] = useState(1);
+
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  // }, [cart]);
 
   useEffect(() => {
     console.log("app mounted");
@@ -92,9 +101,19 @@ function App(props) {
           <Route
             exact
             path="/Cart"
-            render={(props) => <Cart setCart={setCart} cart={cart} />}
+            render={(props) => (
+              <Cart
+                count={count}
+                setCount={setCount}
+                subtotal={subtotal}
+                setSubtotal={setSubtotal}
+                setCart={setCart}
+                cart={cart}
+              />
+            )}
           />
           <Route exact path="/LiquorStore" component={LiquorStore} />
+          <Route exact path="/Checkout" component={Checkout} />
         </Switch>
       </div>
     </TheContext.Provider>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./cocktails.css";
-import axios from "axios";
 import actions from "../api";
-import Cart from "./Cart";
 
 function Cocktails(props) {
   const [drinks, setDrinks] = useState([]);
@@ -14,12 +12,20 @@ function Cocktails(props) {
   }, []);
 
   const addToCart = (data) => {
-    if (!props.cart.find((x) => x.id === data.id)) {
-      props.setCart([...props.cart, data]);
+    // if (!props.cart.find((x) => x.id === data.id)) {
+    //   props.setCart([...props.cart, data]);
+    // } else {
+    //   return alert("item already added to Shopping Cart");
+    // }
+    // console.log("added to cart");()
+    let cart = { ...props.cart };
+    if (cart[data.name]) {
+      alert("item already in Shopping cart");
     } else {
-      return alert("item already added to Shopping Cart");
+      data.quantity = 1;
+      cart[data.name] = data;
     }
-    console.log("added to cart");
+    props.setCart(cart);
   };
 
   let displayAllProducts = () => {
