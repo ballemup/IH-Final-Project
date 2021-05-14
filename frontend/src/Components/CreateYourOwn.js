@@ -51,7 +51,7 @@ function CreateYourOwn(props) {
         <div className = "main">
             <h1>Create Your Own</h1>
             <h2>Choose Alcohol:</h2>
-            <div className="btn-group alcohol">
+            <div className="btn-group alcohol btn-group:active">
                 {showAlcohol()}
             </div>
             <h2>Choose Juices:</h2>
