@@ -11,15 +11,23 @@ import Cocktails from "./Components/Cocktails";
 import CreateYourOwn from "./Components/CreateYourOwn";
 import CartIcon from "./Components/cart-icon/cart-icon";
 import Cart from "./Components/Cart";
-// import Navbar from "./Components/Header";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
 import LiquorStore from "./Components/LiquorStore";
+import Checkout from "./Components/Checkout";
 
+// const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart")) || "{}";
+// import Footer from './Components/Footer';
 
-function App() {
+function App(props) {
   const [user, setUser] = useState({});
   const context = { user, setUser };
+  const [cart, setCart] = useState({});
+  const [count, setCount] = useState(1);
+
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  // }, [cart]);
 
   useEffect(() => {
     console.log("app mounted");
@@ -66,20 +74,44 @@ function App() {
               <Link className="NavL" to="/LiquorStore">
                 Our Liquor Store
               </Link>
-                <Auth className="login-container" setUser={setUser} />
-              <CartIcon />
+              <Auth className="login-container" setUser={setUser} />
+              <Link to="/Cart">
+                <CartIcon cart={cart} />
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        {/* <Footer /> */}
 
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Home {...props} setCart={setCart} cart={cart} />
+            )}
+          />
           <Route exact path="/profile" component={Profile} />
-          <Route exact path="/Cocktails" component={Cocktails} />
+          <Route
+            exact
+            path="/Cocktails"
+            render={(props) => <Cocktails setCart={setCart} cart={cart} />}
+          />
           <Route exact path="/Create-Your-Own" component={CreateYourOwn} />
-          <Route exact path="/Cart" component={Cart} />
+          <Route
+            exact
+            path="/Cart"
+            render={(props) => (
+              <Cart
+                count={count}
+                setCount={setCount}
+                setCart={setCart}
+                cart={cart}
+              />
+            )}
+          />
           <Route exact path="/LiquorStore" component={LiquorStore} />
+          <Route exact path="/Checkout" component={Checkout} />
         </Switch>
       </div>
     </TheContext.Provider>
